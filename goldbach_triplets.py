@@ -23,20 +23,17 @@ class PrimeManager:
 
     def create_triplets(self):
       for p in self.primes:
-        p_2 = 2*int(p)
+        p = int(p)
+        p_2 = 2*p
         s = 0
-        while s < int(p)-1:
+        while s < p-1:
           s += 2
-          p = int(p)
           p_a = p - s
           p_b = p + s
           if str(p_a) in self.primes and str(p_b) in self.primes:
               if p_a + p_b == p_2:
                 print (p_a, p, p_b)
                 self.triplets.append((p_a, p, p_b))
-                p_a = str(p_a)
-                p_b = str(p_b)
-                p = str(p)
                 group = self.relationships.setdefault(p_a, set())
                 group.add(p)
                 group = self.relationships.setdefault(p, set())
